@@ -1,0 +1,5 @@
+misc_dirs:
+  - path: /root
+    owner: root
+    group: wheel
+    mode: 700
