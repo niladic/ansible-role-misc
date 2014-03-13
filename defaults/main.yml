@@ -3,3 +3,6 @@ misc_dirs:
     owner: root
     group: wheel
     mode: 700
+
+misc_gits: []
+misc_symlinks: []

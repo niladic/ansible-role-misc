@@ -1,7 +1,21 @@
 ---
-- name: root ansible dir
+- name: make sure directories exist
   file: path={{ item.path }}
         owner={{ item.owner }} group={{ item.group }} mode={{ item.mode }}
         state=directory
   with_items: misc_dirs
+  tags: misc
+
+- name: make sure git repos exist
+  git: repo={{ item.repo }}
+       dest={{ item.dst }}
+       version={{ item.version }}
+       remote={{ item.remote }}
+       force={{ item.force }}
+  with_items: misc_gits
+  tags: misc
+
+- name: make sure symlinks exist
+  file: src={{ item.src }} dest={{ item.dst }} state=link
+  with_items: misc_symlinks
   tags: misc
